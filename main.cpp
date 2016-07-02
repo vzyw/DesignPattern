@@ -2,17 +2,21 @@
 #include "TemplateMethod/People.h"
 #include "PublishANDSubscribe/WeatherBoard.h"
 #include "Decorator/Beverage.h"
+#include "Factory/PizzaStory.h"
 using namespace std;
 
 
 int main() {
 
-/*    //templateMethod  test
+/*
+    //templateMethod  test
     People *p1 = new PeopleA(),*p2 = new PeopleB();
     p1->celebrateSpringFestival();
-    p2->celebrateSpringFestival();*/
+    p2->celebrateSpringFestival();
+*/
 
-/*    //pub&sub test
+/*
+    //pub&sub test
     Board1 board1;
     Board2 board2;
     WeatherStation a;
@@ -25,7 +29,8 @@ int main() {
     a.changeData(12.5,20);
 */
 
-/* //decotator test
+/*
+     //decotator test
     shared_ptr<Beverage> beverage1(new Coffee);     //一杯coffe
     shared_ptr<Beverage> beverage2(new HouseBlend);
     //两份牛奶的coffee
@@ -42,7 +47,19 @@ int main() {
     cout<<beverage2->getDescription()<<" cost:"<<beverage2->cost();
 */
 
+/*
+    //Factory test
+    PizzaStory * factory = new NyPizzaStory();
+    shared_ptr<Pizza> pizza= factory->orderPizza("hahaPizza");
+    cout<<pizza->getName()<<endl;
+    pizza = p->orderPizza("NyPizza1");
+    cout<<pizza->getName()<<endl;
 
+    delete(factory);
+    factory = new ChicagoPizzaStory();
+    pizza = factory->orderPizza("ChiPizza2");
+    cout<<pizza->getName()<<endl;
+*/
 
 }
 
