@@ -3,6 +3,7 @@
 #include "PublishANDSubscribe/WeatherBoard.h"
 #include "Decorator/Beverage.h"
 #include "Factory/PizzaStory.h"
+#include "TemplateMethod/TemplateMethod.h"
 using namespace std;
 
 
@@ -13,6 +14,14 @@ int main() {
     People *p1 = new PeopleA(),*p2 = new PeopleB();
     p1->celebrateSpringFestival();
     p2->celebrateSpringFestival();
+*/
+
+/*
+    TemplateMethod * templateMethod = new SubClass;
+    templateMethod->function();
+    delete (templateMethod);
+    templateMethod = new SubClass2;
+    templateMethod->function();
 */
 
 /*
@@ -52,7 +61,7 @@ int main() {
     PizzaStory * factory = new NyPizzaStory();
     shared_ptr<Pizza> pizza= factory->orderPizza("hahaPizza");
     cout<<pizza->getName()<<endl;
-    pizza = p->orderPizza("NyPizza1");
+    pizza = fac->orderPizza("NyPizza1");
     cout<<pizza->getName()<<endl;
 
     delete(factory);
