@@ -13,6 +13,7 @@ ShopAIterator::ShopAIterator(vector<MenuItem> list) {
 
 const void* ShopAIterator::next() {
     if(hasNext())return &menuList[pos++];
+    return 0;
 }
 
 bool ShopAIterator::hasNext() {
@@ -88,6 +89,124 @@ Iterator * ShopBMenu::getIterator() {
     return new ShopBIterator(menuList);
 }
 
+namespace Composite {
 
 
+/*--------------------迭代器与组合模式-------------------*/
+
+/*---UnsupportedOperation---*/
+
+    const char *UnsupportedOperation::what() {
+        return "不支持的操作";
+    }
+
+
+/*---MenuComponent---*/
+
+
+
+    void MenuComponent::add(MenuComponent *menuComponent) {
+        throw new UnsupportedOperation();
+    }
+
+    void MenuComponent::remove(MenuComponent *menuComponent) {
+        throw new UnsupportedOperation();
+    }
+
+    MenuComponent * MenuComponent::getChild(int i) {
+        throw new UnsupportedOperation();
+    }
+
+    string MenuComponent::getName() {
+        throw new UnsupportedOperation();
+    }
+
+    string MenuComponent::getDescription() {
+        throw new UnsupportedOperation();
+    }
+
+    float MenuComponent::getPrice() {
+        throw new UnsupportedOperation();
+    }
+
+    bool MenuComponent::isVegetarian() {
+        throw new UnsupportedOperation();
+    }
+
+    void MenuComponent::print() {
+        throw new UnsupportedOperation();
+    }
+
+
+    //MenuItem
+    MenuItem::MenuItem(string name, string des,bool veg, float price):
+    name(name),description(des),vegetarian(veg),price(price){ }
+
+    string MenuItem::getName() {
+        return name;
+    }
+
+    string MenuItem::getDescription() {
+        return description;
+    }
+
+    float MenuItem::getPrice() {
+        return price;
+    }
+
+    bool MenuItem::isVegetarian() {
+        return vegetarian;
+    }
+
+    void MenuItem::print() {
+        cout<<name<<"\t"<<price<<"\t"<<description<<"\t";
+        if(vegetarian) cout<<"v"<<"\t";
+        cout<<endl;
+    }
+
+
+    //Menu
+    Menu::Menu(const string &name, const string &description) : name(name), description(description) {
+
+    }
+
+    void Menu::add(MenuComponent *menuComponent) {
+        menuComponents.push_back(menuComponent);
+        //menuComponents[0].print();
+    }
+
+    void Menu::remove(MenuComponent *menuComponent) {
+        for(auto iter = menuComponents.begin();
+            iter!=menuComponents.end(); iter++){
+            if((*iter) == menuComponent){
+                menuComponents.erase(iter);
+            }
+        }
+    }
+
+    MenuComponent * Menu::getChild(int i) {
+        return menuComponents[i];
+    }
+
+    string Menu::getName() {
+        return name;
+    }
+
+    string Menu::getDescription() {
+        return description;
+    }
+
+    void Menu::print() {
+        cout<<name<<"\t"<<description<<endl;
+        for(auto i = menuComponents.begin();
+                i!=menuComponents.end();i++){
+            (*i)->print();
+        }
+    }
+
+
+
+
+
+}
 

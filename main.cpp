@@ -70,6 +70,10 @@ int main() {
     pizza = factory->orderPizza("ChiPizza2");
     cout<<pizza->getName()<<endl;
 */
+/*
+
+    */
+/*----iterator test----*//*
 
     ShopAMenu shopAMenu;
     ShopBMenu shopBMenu;
@@ -81,9 +85,44 @@ int main() {
     cout<<((MenuItem *)(q->next()))->getName();
     cout<<((MenuItem *)(q->next()))->getName();
 
+    */
+/*----Iterator-Composite test----*//*
 
 
+    using Composite::MenuComponent;
+    using Composite::Menu;
+    try {
+        //三份菜单集合
+        MenuComponent * menu1 = new Menu("menu1","\"this is menu1\"");
+        MenuComponent * menu2 = new Menu("menu2","\"this is menu2\"");
+        //MenuComponent * menu3 = new Menu("menu3","this is menu3");
 
+        MenuComponent * allMenu = new Menu("allMenu","\"this is all menu\"");
 
+        allMenu->add(menu1);
+        allMenu->add(menu2);
+
+        MenuComponent *f1 = new Composite::MenuItem("m1Food1","\"menu1 food1\"",true,1.1);
+        MenuComponent *f2 = new Composite::MenuItem("m1Food2","\"menu1 food2\"",false,3.1);
+        menu1->add(f1);
+        menu1->add(f2);
+
+        MenuComponent *m2f1 = new Composite::MenuItem("m2Food1","menu2 food1",false,5.1);
+        MenuComponent * menu2_childMenu = new Menu("menu2_childMenu","\"this is menu2_childMenu\"");
+
+        MenuComponent *m2_childFood1 = new Composite::MenuItem("menu2_childMenuFood1","\"menu2_childMenu food1\"",false,6.1);
+        MenuComponent *m2_childFood2 = new Composite::MenuItem("menu2_childMenuFood2","\"menu2_childMenu food2\"",true,10.1);
+        menu2_childMenu->add(m2_childFood1);
+        menu2_childMenu->add(m2_childFood2);
+
+        menu2->add(m2f1);
+        menu2->add(menu2_childMenu);
+        allMenu->print();
+    }catch(Composite::UnsupportedOperation * e) {
+        cout<<(*e).what();
+    }
+*/
+
+    
 }
 
