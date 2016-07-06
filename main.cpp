@@ -4,6 +4,7 @@
 #include "Decorator/Beverage.h"
 #include "Factory/PizzaStory.h"
 #include "TemplateMethod/TemplateMethod.h"
+#include "Iterator/Menu.h"
 using namespace std;
 
 
@@ -69,6 +70,20 @@ int main() {
     pizza = factory->orderPizza("ChiPizza2");
     cout<<pizza->getName()<<endl;
 */
+
+    ShopAMenu shopAMenu;
+    ShopBMenu shopBMenu;
+    Iterator * p = shopAMenu.getIterator();
+    Iterator * q = shopBMenu.getIterator();
+    cout<<((MenuItem *)(p->next()))->getName();
+    cout<<((MenuItem *)(p->next()))->getName();
+
+    cout<<((MenuItem *)(q->next()))->getName();
+    cout<<((MenuItem *)(q->next()))->getName();
+
+
+
+
 
 }
 
