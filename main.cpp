@@ -5,6 +5,7 @@
 #include "Factory/PizzaStory.h"
 #include "TemplateMethod/TemplateMethod.h"
 #include "Iterator/Menu.h"
+#include "Delegate/Delegate.h"
 using namespace std;
 
 
@@ -123,6 +124,9 @@ int main() {
     }
 */
 
-    
+    /*Delegetae test*/
+    ProxyObject proxyObject;
+    proxyObject.someOperation();
+
 }
 

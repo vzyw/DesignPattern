@@ -173,10 +173,6 @@ namespace Composite {
 
 
     /*----构建一个组合类的迭代器----*/
-    class CompositeIterator{
-    public:
-
-    };
 }
 
 
